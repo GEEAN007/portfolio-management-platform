@@ -37,3 +37,6 @@ Enterprise-level Full Stack Portfolio & Admin Management System.
 
 ## Project Structure
 
+- Backend
+- Frontend(Admin)
+- Frontend(Client)
