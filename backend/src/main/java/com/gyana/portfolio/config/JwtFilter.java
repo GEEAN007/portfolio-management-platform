@@ -28,6 +28,18 @@ protected void doFilterInternal(HttpServletRequest request,
                                 FilterChain filterChain)
         throws ServletException, IOException {
 
+    String path = request.getServletPath();
+
+    // 🔥 Skip JWT processing for public & documentation endpoints
+    if (path.startsWith("/auth") ||
+        path.startsWith("/h2-console") ||
+        path.startsWith("/v3/api-docs") ||
+        path.startsWith("/swagger-ui")) {
+
+        filterChain.doFilter(request, response);
+        return;
+    }
+
     String header = request.getHeader("Authorization");
 
     if (header != null && header.startsWith("Bearer ")) {

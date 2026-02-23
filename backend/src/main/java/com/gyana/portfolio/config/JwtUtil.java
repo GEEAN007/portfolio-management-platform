@@ -18,7 +18,7 @@ public class JwtUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(key)
                 .compact();
-    }
+    } 
 
     public static String extractEmail(String token) {
         return Jwts.parserBuilder()
